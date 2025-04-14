@@ -4,8 +4,8 @@ export default function taskBlock(trueOrFalse) {
 
   if (trueOrFalse) {
 /* eslint-disable */	
-    task;
-    task2;
+    let task = false;
+    let task2 = true;
   }
 
   return [task, task2];
