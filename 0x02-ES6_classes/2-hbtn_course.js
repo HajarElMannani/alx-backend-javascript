@@ -6,7 +6,7 @@ export default class ALXCourse {
     if (typeof length !== 'number') {
       throw new TypeError('Length must be a number');
     }
-    if (!Array.isArray(students) || !students.every(s => typeof s === 'string')) {
+    if (!Array.isArray(students)) {
       throw new TypeError('Students must be an array of strings');
     }
     this._name = name;
@@ -41,7 +41,7 @@ export default class ALXCourse {
   }
 
   set students(students) {
-    if (!Array.isArray(students) || !students.every((s) => typeof s === 'string')) {
+    if (!Array.isArray(students)) {
       throw new TypeError('Students must be an array');
     }
     this._students = students;
