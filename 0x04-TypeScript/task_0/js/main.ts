@@ -1,18 +1,18 @@
 interface Student {
   firstName: string;
   lastName: string;
-  age; number;
+  age: number;
   location: string;
 }
 
-const student1: Student {
+const student1: Student = {
   firstName: 'Jane',
   lastName: 'Austin',
   age: 25,
   location: 'London, England',
 }
 
-const student2:	Student	{
+const student2:	Student	= {
   firstName: 'Rim',
   lastName: 'Miro',
   age: 20,
@@ -35,9 +35,9 @@ table.appendChild(tableRow);
 studentsList.forEach((student) => {
 const row = document.createElement('tr');
 const rowName = document.createElement('td');
-rowName.textContent = 'student.firstName';
+rowName.textContent = student.firstName;
 const rowLocation = document.createElement('td');
-rowLocation.textContent = 'student.location';
+rowLocation.textContent = student.location;
 
 row.appendChild(rowName);
 row.appendChild(rowLocation);
