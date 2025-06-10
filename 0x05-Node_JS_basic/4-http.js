@@ -2,7 +2,7 @@ const express = require('express');
 
 const app = express();
 app.use((req, res) => {
-  res.send('Hello ALX!');
+  res.send('Hello Holberton School!');
 });
 app.listen(1245, () => {
     console.log('listening on port 1245');
