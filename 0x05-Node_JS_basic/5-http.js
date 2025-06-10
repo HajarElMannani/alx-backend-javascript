@@ -41,6 +41,8 @@ const app = http.createServer(async (req, res) => {
       res.end('Cannot load the database');
     }
   }
+  res.statusCode = 404;
+  res.end('Notfound');
 });
 app.listen(1245);
 module.exports = app;
