@@ -2,8 +2,6 @@ const http = require('http');
 const fs = require('fs').promises;
 
 const fileName = process.argv[2];
-const fs = require('fs').promises;
-
 async function countStudents(path) {
     try {
 	const data = await fs.readFile(path, 'utf-8');
@@ -19,18 +17,17 @@ async function countStudents(path) {
 	    }
 	    fields[field].push(firstname);
 	}
-	console.log(`Number of students: ${lines.length}`);
+	let report = `Number of students: ${lines.length}`;
 	for (const field in fields) {
 	    if (Object.prototype.hasOwnProperty.call(fields, field)) {
 		const list = fields[field].join(', ');
-		console.log(`Number of students in ${field}: ${fields[field].length}. List: ${list}`);
+		report += `Number of students in ${field}: ${fields[field].length}. List: ${list}`;
 	    }
-	}
+	    return report;
     } catch (err) {
 	throw new Error('Cannot load the database');
     }
 }
-module.exports = countStudents;
 const app = http.createServer((req, res) => {
   if (req.url === '/') {
     res.end('Hello ALX!');
