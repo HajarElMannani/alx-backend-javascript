@@ -29,7 +29,7 @@ async function countStudents(path) {
 }
 const app = http.createServer(async (req, res) => {
   if (req.url === '/') {
-    res.end('Hello ALX!');
+    res.end('Hello Holberton School!');
     return;
   }
   if (req.url === '/students') {
@@ -41,8 +41,6 @@ const app = http.createServer(async (req, res) => {
       res.end('Cannot load the database');
     }
   }
-  res.statusCode = 404;
-  res.end('Notfound');
 });
 app.listen(1245);
 module.exports = app;
