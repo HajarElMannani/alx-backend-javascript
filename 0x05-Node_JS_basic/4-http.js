@@ -5,6 +5,6 @@ app.use((req, res) => {
   res.send('Hello Holberton School!');
 });
 app.listen(1245, () => {
-    console.log('listening on port 1245');
+  console.log('listening on port 1245');
 });
 module.exports = app;
