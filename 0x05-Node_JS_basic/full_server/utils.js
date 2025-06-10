@@ -1,6 +1,6 @@
-const fs = require('fs').promises;
+import { promises as fs } from 'fs';
 
-async function readDatabase(path) {
+export async function readDatabase(path) {
     try {
 	const data = await fs.readFile(path, 'utf-8');
 	const students = data.trim().split('\n').filter((line) => line.trim() !== '');

@@ -9,7 +9,7 @@ class StudentsController {
 						      a.toLowerCase().localeCompare(b.toLowerCase())
 						     );
 	    for (const field of fields) {
-		const list = fields[field].join(', ');
+		const list = fileName[field].join(', ');
 		out += `Number of students in ${field}: ${fileName[field].length}. List: ${list}\n`;
 	    }
 	    return response.status(200).send(out);
@@ -20,13 +20,13 @@ class StudentsController {
     static async getAllStudentsByMajor(request, response) {
 	const major = request.params.major;
 	if (major !== 'CS' && major !== 'SWE') {
-	    return response.status(500).send(' Major parameter must be CS or SWE');
+	    return response.status(500).send('Major parameter must be CS or SWE');
 	}
 	try {
 	    const fileName = await readDatabase(process.argv[2]);
 	    const nameList = fileName[major] || [];
-	    response.status(200).send(`List: ${nameList.join(', ')}`);
+	    return response.status(200).send(`List: ${nameList.join(', ')}`);
 	} catch (err) {
-	    response.status(500).send('Cannot load the database');
+	    return response.status(500).send('Cannot load the database');
 	}}}
 export default StudentsController;
