@@ -6,7 +6,6 @@ async function countStudents(path) {
     try {
 	const data = await fs.readFile(path, 'utf-8');
 	const students = data.trim().split('\n').filter((line) => line.trim() !== '');
-	const lines = students.slice(1);
 	const fields = {};
 	for (const line of lines) {
 	    const seg = line.split(',');
@@ -17,32 +16,32 @@ async function countStudents(path) {
 	    }
 	    fields[field].push(firstname);
 	}
-	let report = `Number of students: ${lines.length}`;
-	for (const field in fields) {
-	    if (Object.prototype.hasOwnProperty.call(fields, field)) {
+	let report = `Number of students: ${lines.length}\n`;
+	for (const field of Object.keys(fields)) {
 		const list = fields[field].join(', ');
-		report += `Number of students in ${field}: ${fields[field].length}. List: ${list}`;
+		report += `Number of students in ${field}: ${fields[field].length}. List: ${list}\n`;
 	    }
-	    return report;
+	return report.trim();
     } catch (err) {
 	throw new Error('Cannot load the database');
     }
 }
-const app = http.createServer((req, res) => {
+const app = http.createServer(async (req, res) => {
   if (req.url === '/') {
-    res.end('Hello ALX!');
+      res.end('Hello ALX!');
+      return;
   }
   if (req.url === '/students') {
-    res.write('This is the list of our students\n');
-    countStudents(fileName)
-    .then((report) => {
-      res.end(report);
-    });
-    .catch ((err) => {
-      res.end('Cannot load database');
-    });
+      res.write('This is the list of our students\n');
+      try {
+	  const report = await countStudents(fileName);
+	  res.end(report);
+      } catch (err) {
+	  res.end('Cannot load the database');
+      }
+      return;
   }
-  res.end();
 });
+
 app.listen(1245);
 module.exports = app;
