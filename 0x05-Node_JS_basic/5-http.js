@@ -28,20 +28,19 @@ async function countStudents(path) {
   }
 }
 const app = http.createServer(async (req, res) => {
-if (req.url === '/') {
-  res.end('Hello ALX!');
-  return;
-}
-if (req.url === '/students') {
-  res.write('This is the list of our students\n');
-  try {
-    const report = await countStudents(fileName);
-    res.end(report);
-  } catch (err) {
-    res.end('Cannot load the database');
+  if (req.url === '/') {
+    res.end('Hello ALX!');
+    return;
   }
-  return;
-}
+  if (req.url === '/students') {
+    res.write('This is the list of our students\n');
+    try {
+      const report = await countStudents(fileName);
+      res.end(report);
+    } catch (err) {
+      res.end('Cannot load the database');
+    }
+  }
 });
 app.listen(1245);
 module.exports = app;
