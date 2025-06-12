@@ -9,7 +9,7 @@ describe('Test index page', function () {
       done();
     });
   });
-  it('Should return Welcome to the payment system', function () {
+  it('Should return Welcome to the payment system', function (done) {
     request.get('http://localhost:7865', (err, res, body) => {
       expect(body).to.equal('Welcome to the payment system');
       done();
