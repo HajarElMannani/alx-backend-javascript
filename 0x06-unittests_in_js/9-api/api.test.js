@@ -21,7 +21,7 @@ describe('Test for cart page', function () {
   it('should be 200', function (done) {
     request.get('http://localhost:7865/cart/10', (err, res, body) => {
       expect(res.statusCode).to.equal(200);
-      expect(body).to.equal('Payment methods for cart 12');
+      expect(body).to.equal('Payment methods for cart 10');
       done();
     });
   });
