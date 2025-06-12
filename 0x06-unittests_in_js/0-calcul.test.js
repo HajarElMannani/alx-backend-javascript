@@ -19,5 +19,5 @@ describe('should sum two numbers', function () {
   });
   it('should round 1.55555555 and 3.777777777 and sum', function () {
     assert.strictEqual(calculateNumber(1.555555555, 3.77777777), 6);
-  });  
+  });
 });
