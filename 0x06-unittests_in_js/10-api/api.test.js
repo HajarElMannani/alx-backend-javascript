@@ -38,6 +38,7 @@ describe('Test for /login endpoint', function () {
     const meth = {
       url: 'http://localhost:7865/login',
       method: 'POST',
+      json: true,
       body: { userName: 'Sarah'}
     };
     request(meth, (err, res, body) => {
